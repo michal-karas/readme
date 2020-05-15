@@ -1,6 +1,7 @@
-from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator
 from django.conf import settings
+from django.core.validators import MinValueValidator, MaxValueValidator
+from django.db import models
+
 from books.models import Book
 
 
@@ -11,29 +12,29 @@ class Review(models.Model):
         null=False,
         blank=False,
         verbose_name="Author",
-        help_text='',
+        help_text="",
     )
     title = models.CharField(
         max_length=100,
         null=False,
         blank=False,
         verbose_name="Title",
-        help_text=''
+        help_text="",
     )
     content = models.TextField(
         blank=False,
         verbose_name="Content",
-        help_text='',
+        help_text="",
     )
-    pub_data = models.DateTimeField(
+    pub_date = models.DateTimeField(
         null=True,
         blank=True,
         verbose_name="Publication timestamp",
-        help_text='',
+        help_text="",
     )
     STATE_CHOICES = (
         ('draft', 'Draft'),
-        ('in_moderation', 'In-moderation'),
+        ('in_moderation', 'In moderation'),
         ('rejected', 'Rejected'),
         ('published', 'Published'),
     )
@@ -43,18 +44,22 @@ class Review(models.Model):
         null=False,
         blank=False,
         verbose_name="Title",
-        help_text='',
+        help_text="",
     )
     grade = models.PositiveIntegerField(
         null=False,
         blank=False,
         verbose_name="Grade",
-        help_text='Values from 1 to 10',
+        help_text="Values from 1 to 10",
         validators=[
             MinValueValidator(0),
             MaxValueValidator(11),
         ],
     )
+
+    def __str__(self):
+        return f'{self.book.title} review by {self.user} ({self.title})'
+
 
 class Grade(models.Model):
     user = models.ForeignKey(
@@ -82,3 +87,6 @@ class Grade(models.Model):
         verbose_name="Book",
         help_text="",
     )
+
+    def __str__(self):
+        return f'{self.book.title} grade {self.grade} by {self.user}'

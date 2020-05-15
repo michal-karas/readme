@@ -1,0 +1,10 @@
+{% extends "base_books.html" %}
+
+{% block content %}
+<p>Wszyscy autorzy:</p>
+<ul>
+{% for author in object_list %}
+    <li><a href ="{% url 'books:author-details' author.pk %}">{{ author }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

@@ -24,10 +24,14 @@ class Author(models.Model):
     )
     web_site = models.URLField(
         null=False,
-        blank=False,
-        verbose_name="Web Site",
+        blank=True,
+        default="",
+        verbose_name="Web Site Address",
         help_text="",
     )
+
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
 
 
 class Book(models.Model):
@@ -62,10 +66,14 @@ class Book(models.Model):
         verbose_name="Description",
         help_text="",
     )
+    cover = models.ImageField(
+        blank=True, null=False, default="",
+        verbose_name="Cover image",
+        help_text="",
+    )
 
-    # cover_link = models.ImageField(
-    # )
-    # link do zdjęcia książki
+    def __str__(self):
+        return f'{self.title} (by {self.author})'
 
 
 class Category(models.Model):
@@ -79,3 +87,9 @@ class Category(models.Model):
         verbose_name="Description",
         help_text="",
     )
+
+    class Meta:
+        verbose_name_plural = 'Categories'
+
+    def __str__(self):
+        return self.name
