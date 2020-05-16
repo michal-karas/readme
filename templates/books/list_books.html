@@ -4,7 +4,7 @@
 <p>Wszystkie książki:</p>
 <ul>
 {% for book in object_list %}
-    <li><a href="{% url 'books:book-details' book.pk %}">{{ book }}</a></li>
+   <li><a href="{% url 'books:book-details' book.pk %}">{{ book }}</a></li>
 {% endfor %}
 </ul>
 {% endblock %}

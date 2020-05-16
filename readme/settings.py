@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django_comments',
 ]
 
+SITE_ID = 1
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -56,7 +58,9 @@ ROOT_URLCONF = 'readme.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+        ], #wprowadzamy faktyczna ścieżka do pliku, base dir to katalog w ktorym jest manage.py
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,5 +124,5 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-SITE_ID = 1
-
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'

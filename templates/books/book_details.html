@@ -1,0 +1,32 @@
+{% extends "base_books.html" %}
+{% load comments %}
+{% block content %}
+
+<h3>Szczegóły ksiązki {{ object.title }}</h3>
+
+{% if request.user.is_authenticated %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Oceń">
+</form>
+
+<a href="{% url 'reviews:add-book-review' object.pk %}">Dodaj recenzję ksiązki</a>
+{% endif %}
+
+
+<p>Średnia ocen: {{ avg_grades.average| floatformat:2|default:"&mdash;" }} (Zagłosowano {{avg_grades.count}} razy)</p>
+
+
+<p>Autor: <a href="{% url 'books:author-details' object.author.pk %}">{{ object.author }}</a></p>
+<p>Książka ma {{ object.pages }} stron.</p>
+<p>{{ object.description }}</p>
+
+<img src="{{ object.cover.url }}" alt="Okładka książki {{object.title }}">
+
+<hr>
+<h3>Komentarze:</h3>
+{% render_comment_form for object %}
+{% render_comment_list for object %}
+{% endblock %}

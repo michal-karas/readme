@@ -17,11 +17,18 @@
 <body>
     <nav>
         <ul>
-            <li><a href="#">Strona główna</a></li>
+            <li><a href="{% url 'books:index' %}">Strona główna</a></li>
             <li><a href="{% url 'books:list-authors' %}">Autorzy</a></li>
             <li><a href="{% url 'books:list-books' %}">Książki</a></li>
             <li><a href="{% url 'books:list-categories' %}">Kategorie</a></li>
         </ul>
+        {% if request.user.is_authenticated %}
+        <p>Witaj, {{ request.user.first_name }}!</p>
+        <p><a href="{% url 'reviews:list-reviews' %}">Twoje recenzje</a></p>
+        <p><a href="{% url 'logout' %}">Wyloguj</a></p>
+        {% else %}
+        <p><a href="{% url 'login' %}">Zaloguj</a></p>
+        {% endif %}
     </nav>
     <main>
         <h1>{{ title }}</h1>
