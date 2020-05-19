@@ -2,10 +2,18 @@ from django.conf import settings
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.utils.timezone import now
+
 from books.models import Book
 
 
+class ReviewManager(models.Manager):
+    def published(self):
+        return self.filter(state='published')
+
+
 class Review(models.Model):
+    objects = ReviewManager()
+
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.PROTECT,
@@ -69,7 +77,7 @@ class Review(models.Model):
 
     def save(self, *args, **kwargs):
         if self.state == 'published' and not self.pub_date:
-            self.pub_date = now()
+            self.pub_date = now()  # from django.utils.timezone import now
 
         return super().save(*args, **kwargs)
 

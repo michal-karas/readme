@@ -1,0 +1,87 @@
+body {
+        background-color: #003153;
+        padding: 40px;
+        display: block;
+        text-align: center;
+    }
+nav h3 {
+        color: #b6b6b6;
+        text-align: center;
+        }
+
+.title h3 {
+        color: #00ccff;
+        font-size: 56px;
+        text-align: center;
+}
+
+.title p {
+        color: #dddddd;
+        font-size: 25px;
+        ont-weight: 300;
+        text-align: center;
+}
+
+.question {
+        color: #dddddd;
+        font-size: 25px;
+        ont-weight: 300;
+        text-decoration: none;
+        text-align: center;
+}
+
+.question h2 a {
+        text-decoration: none;
+        color: #dddddd;
+        text-align: center;
+}
+
+.form {
+        color: #dddddd;
+        font-size: 25px;
+        ont-weight: 300;
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+
+}
+
+.form ol .form form ol li label {
+        color: #dddddd;
+        font-size: 25px;
+}
+
+.button input {
+
+          background-color: #00ccff;
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-weight: 400;
+          font-size: 26px;
+          margin: 4px 2px;
+          cursor: pointer;
+          padding: 0 0 40px 0:
+}
+form .nav a {
+          background-color: #00ccff;
+          border: none;
+          color: #003153;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-weight: 600;
+          font-size: 26px;
+          margin: 4px 2px;
+          cursor: pointer;
+          padding: 0 0 40px 0:
+}
+
+.result ol li {
+        color: #dddddd;
+}

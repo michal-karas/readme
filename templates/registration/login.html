@@ -1,8 +1,10 @@
 {% extends "base_books.html" %}
+
 {% block content %}
     {% if form.errors %}
     <strong>Error:</strong> Your username and password didn't match.
     {% endif %}
+
     <form method="post" action="{% url 'login' %}">
         {% csrf_token %}
         <table>
@@ -15,7 +17,9 @@
             <td>{{ form.password }}</td>
         </tr>
         </table>
+
         <input type="submit" value="login">
         <input type="hidden" name="next" value="{{ next }}">
     </form>
+
 {% endblock %}

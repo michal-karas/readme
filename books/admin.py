@@ -17,18 +17,20 @@ class AuthorAdmin(admin.ModelAdmin):
 
 
 class BookAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'pages', 'description_short', 'cover')
+    list_display = ('title', 'author', 'pages', 'krotki_opis', 'cover')
     list_filter = ('title', 'author', 'categories', 'pages')
     search_fields = ('title', 'description', 'author__first_name', 'author__last_name')
 
-    def description_short(self, obj):
+    # Book.objects.filter(author__first_name__startswith='Andrzej')
+
+    def krotki_opis(self, obj):
         return (
             f'{obj.description[:50]}...'
             if len(obj.description) > 50
             else obj.description
         )
 
-    description_short.short_description = 'Description'
+    # krotki_opis.short_description = 'Description'
 
 
 class CategoryAdmin(admin.ModelAdmin):
